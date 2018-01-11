@@ -6,7 +6,6 @@ from models.player import Player
 from views.splashscreen import *
 from views.gamescreen import *
 
-from random import randint, choice
 from asciimatics.widgets import Frame, TextBox, Layout, Label, Divider, Text, CheckBox, RadioButtons, Button, PopUpDialog, TimePicker, DatePicker, Background
 from asciimatics.scene import Scene
 from asciimatics.screen import Screen
