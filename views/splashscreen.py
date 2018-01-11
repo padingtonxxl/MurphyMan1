@@ -36,17 +36,17 @@ class SplashScreenFrame(Frame):
         }
         self._readConfig(game.config)
         super(SplashScreenFrame, self).__init__(screen,
-                                                int(screen.height *2 // 3),
-                                                int(screen.width * 2 // 3),
+                                                int(self.game.config.windowHeight),
+                                                int(self.game.config.windowWidth),
                                                 data=self.form_data,
                                                 has_shadow=True,
                                                 name="SplashScreen")
-        
+
         layout = Layout([1, 18, 1])
         self.add_layout(layout)
         self._reset_button = Button("Reset", self._reset)
         layout.add_widget(Divider(height=3), 1)
-        layout.add_widget(Label("MURPHY MAN 1 - Das kleine Einmaleins"), 1)
+        layout.add_widget(Label("MURPHY MAN 1 - Einmaleins"), 1)
         layout.add_widget(Divider(height=3), 1)
         layout.add_widget( CheckBox("1", "1x?", "cb_one", self._on_change), 1)
         layout.add_widget( CheckBox("2", None, "cb_two", self._on_change), 1)
@@ -65,7 +65,7 @@ class SplashScreenFrame(Frame):
                          validator="^[a-zA-Z]*$")
         layout.add_widget(nameWidget, 1)
         layout.add_widget(Divider(height=3), 1)
-        layout2 = Layout([1, 1])
+        layout2 = Layout([10, 10])
         self.add_layout(layout2)
         layout2.add_widget(Button("Start", self._start), 0)
         layout2.add_widget(Button("Beenden", self._quit), 1)

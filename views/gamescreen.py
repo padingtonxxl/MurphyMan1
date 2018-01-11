@@ -24,8 +24,8 @@ class GameScreenFrame(Frame):
     def __init__(self, screen, game):
         self.game = game
         super(GameScreenFrame, self).__init__(screen,
-                                                int(screen.height *2 // 3),
-                                                int(screen.width * 2 // 3),
+                                                int(self.game.config.windowHeight),
+                                                int(self.game.config.windowWidth),
                                                 data={},
                                                 on_load=self._reload,
                                                 has_shadow=True,
@@ -75,20 +75,20 @@ class GameScreenFrame(Frame):
                                     "Richtig!",
                                     ["Weiter"],
                                     on_close=self._next_round))
-                    
+
                 else:
                     self._scene.add_effect(
                         PopUpDialog(self._screen,
                                     "Falsch!",
                                     ["Neuer Versuch"],
                                     on_close=self._again))
-    
+
     def _on_change(self):
         self.save()
 
     def _reload(self):
         try:
-            if self._excercise.solved == True:                
+            if self._excercise.solved == True:
                 self._excercise = Excercise(choice(self.game.config.getNumberList()))
         except AttributeError:
             self._excercise = Excercise(choice(self.game.config.getNumberList()))
@@ -108,7 +108,7 @@ class GameScreenFrame(Frame):
     def _quit_on_yes(selected):
         if selected == 0:
             raise StopApplication("Spiel beendet")
-        
+
     @staticmethod
     def _next_round(selected):
         if selected == 0:
